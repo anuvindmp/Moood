@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <script src="recipe.js"></script>
+    <link rel="stylesheet" href="recipe.css">
+    <title>Recipe</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="div1">
+            <div class="anim">
+            <span class="key">M</span>
+            <span class="key">o</span>
+            <span class="key">o</span>
+            <span class="key">o</span>
+            <span class="key">D</span>
+            </div> 
+          </div>
+        
+
+        <button class="menu" onclick="drop()" id="menu">Menu</button>  
+        <div class="dropdown" id="dropdown">
+            <table>
+                <button class="close" onclick="drop1()"> Close X</button>
+                <tr><td>HOME</td></tr>
+                <tr><td>TRY NOW</td></tr>
+                <tr><td>SUGGESTIONS</td></tr>
+                <tr><td>ABOUT US</td></tr>
+                <tr><td>CONTACT</td></tr>
+            </table>
+        </div>  
+        <div class="div2"> 
+            <p class="food-fact">"Idli is not just a breakfast—it's a warm, fluffy hug on a plate!"</p>
+        </div>
+
+        <div class="div3">
+            <div class="ingredients">
+                <p class="ingredient-title">INGREDIENTS : </p>
+                <p class="ingredient-list">Parboiled rice – 2 cups,
+
+                    Urad dal (split black gram) – 1 cup,
+                    
+                    Fenugreek seeds – ½ tsp,
+                    
+                    Salt – to taste,
+                    
+                    Water – as needed for soaking and grinding,
+                    
+                    Oil or ghee – for greasing idli molds (optional).</p>
+            </div>
+            <div class="energy">
+                <p class="energy-title">ENERGY VALUE : </p>
+
+                <table class="energy-list" style="border-collapse: collapse;">
+                    <tr><td>Calories</td><td class="calories">39 kcal</td></tr>
+                    <tr><td>Carbohydrates</td><td class="carb">7.4 g</td></tr>
+                    <tr><td>Protein</td><td class="protein">1.6 g</td></tr>
+                    <tr><td>Fat</td><td class="fat">0.2 g</td></tr>
+                    <tr><td>Fiber</td><td class="fiber">0.3 g</td></tr>
+                  </table>
+
+            </div>
+        </div>
+
+        <div class="div4">
+            <p class="preperation-title">PREPERATION STEPS : </p>
+            <list class="steps">
+                <li class="step1">Soak the rice and fenugreek seeds together in a large bowl for about 6 hours. In a separate bowl, soak the urad dal. The soaking process is essential for soft and fluffy idlis.</ul>
+                <li class="step2">After soaking, drain the water and begin grinding the urad dal using a little water. Grind it until it becomes smooth and fluffy. Next, grind the rice and fenugreek mixture to a slightly coarse consistency, adding just enough water to achieve a smooth batter.</ol>
+                <li class="step3">Combine the rice batter and urad dal batter in a large mixing bowl, ensuring they are thoroughly mixed. You can use your hands to gently knead the batter, which helps with fermentation. Cover the bowl with a clean cloth or lid and set it aside in a warm place for 8–12 hours to ferment. The batter should double in size and have a slightly sour smell once it's fermented.</ol>
+                <li class="step4">Once fermented, gently stir the batter and add salt to taste. Make sure the batter has a smooth and slightly pourable consistency. If needed, adjust the water level to ensure it’s not too thick.</ol>
+                <li class="step5">Grease the idli molds with a little oil or ghee. Pour the batter into the molds, filling each section about 3/4 full. Ensure that the batter is evenly distributed across all the molds.</ol>
+                <li class="step6">Steam the filled idli molds in a steamer or pressure cooker without the pressure (do not add the weight). Steam for about 10–12 minutes or until a toothpick inserted into an idli comes out clean. Once done, allow the idlis to cool slightly before removing them from the molds. Serve hot with chutney and sambar.</ol>
+            </list>
+
+        </div>
+    </div>   
+
+
+    <div class="suggestions">
+        <div class="suggestions-title">Give these a try as well.</div>
+        <div class="s1"></div>
+        <div class="s2"></div>
+        <div class="s3"></div>
+        <div class="s4"></div>
+    </div>
+        
+
+    <div class="footer">
+        <p class="footer-head">HAVE A QUESTION ? THEN THERE'S AN ANSWER.</p>
+
+        <form action="/submit" method="post">
+            <table class="feedback">
+                <tr id="m">
+                    <td>Name :<br><input type="text" required id="name"></td>
+                    <td>Phone :<br><input type="tel" required id="ph"></td>
+                    <td>Email :<br><input type="email" required id="email"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">Subject of matter :<br><input type="text" required id="subject"></td>
+                    <td>City :<br><input type="text" id="city"></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3">Message<br><input type="text" required id="msg"></td>
+                </tr>
+                <tr>
+                    <td colspan="3"><button type="submit" id="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+
+        <div class="footnote">
+        <a href="https://github.com/anuvindmp/Moood" target="_blank">Made with &hearts;</a>
+        </div>
+          
+    
+    </div>
+</body>
+</html> 
