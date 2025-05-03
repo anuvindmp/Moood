@@ -414,8 +414,8 @@ input:focus {
   position: absolute;
   top: 0;
   right: 0;
-  width: 350px;
-  height: 360px;
+  width: 15vw;
+  height: 40vh;
   padding: 80px;
   border-radius: 80px 0 80px 50px;
   display: none;
