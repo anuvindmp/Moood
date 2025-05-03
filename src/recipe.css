@@ -208,7 +208,7 @@ body {
 .energy-list {
   font-family: 'poppins';
   color: black;
-  font-size: 20px;
+  font-size: 1vw;
   margin-left: 50px;
   border-collapse: collapse;
   width: 100%;
@@ -217,14 +217,14 @@ body {
 .ingredient-list {
   font-family: 'poppins';
   color: black;
-  font-size: 20px;
+  font-size: 1vw;
   padding: 0 20px 0 20px;
 }
 
 .steps {
   font-family: 'poppins';
   color: black;
-  font-size: 20px;
+  font-size: 1vw;
 }
 
 li {
@@ -252,7 +252,7 @@ li {
   grid-column: span 8 / span 8;
   font-family: 'cervo1';
   text-align: center;
-  font-size: 90px;
+  font-size: 5vw;
   color: #B00E2F;
 }
 
@@ -321,7 +321,7 @@ li {
 
 .footer-head {
   position: absolute;
-  font-size: 90px;
+  font-size: 5vw;
   top: 12vh;
   width: 100%;
   text-align: center;
@@ -330,7 +330,7 @@ li {
 form {
   position: absolute;
   top: 40vh;
-  font-size: 20px;
+  font-size: 1vw;
   font-family: 'poppins';
 }
 
@@ -357,17 +357,17 @@ input:focus {
 #ph,
 #email,
 #city {
-  width: 500px;
+  width: 26vw;
   margin: 0px 60px 60px 0px;
 }
 
 #subject {
-  width: 1100px;
+  width: 52vw;
   margin: 0px 60px 60px 0px;
 }
 
 #msg {
-  width: 1700px;
+  width: 86vw;
   margin: 0px 60px 60px 0px;
 }
 
@@ -378,7 +378,7 @@ input:focus {
   font-family: 'poppins';
   width: 100px;
   height: 40px;
-  font-size: 20px;
+  font-size: 1vw;
   box-shadow: 0 2px 5px 0 white;
 
 }
@@ -409,7 +409,7 @@ input:focus {
   background-color: #B00E2F;
   color: white;
   font-family: 'cervo1';
-  font-size: 60px;
+  font-size: 3vw;
   z-index: 3;
   position: absolute;
   top: 0;
@@ -436,7 +436,7 @@ input:focus {
   width: 100px;
   height: 43px;
   font-family: 'poppins';
-  font-size: 25px;
+  font-size: 1.1vw;
   color: #B00E2F;
   text-align: center;
   border: #B00E2F solid 1px;

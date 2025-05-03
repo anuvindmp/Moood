@@ -2,6 +2,19 @@
     margin: 0;
 }
 
+@font-face {
+    font-family: 'cervo1';
+    src: url('/Assets/Cervo/Cervo-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'cervo2';
+    src: url('/Assets/Cervo/Cervo-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
 
 body{
     font-family: 'Poppins', sans-serif;
