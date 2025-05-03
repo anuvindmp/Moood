@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home.css">
+    <script src="home.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    
+
+
+
+<div class="parent">
+    <div class="nav">
+        <img src="../Assets/logo-removebg-preview.png" id="logo" alt="logo">
+        <button class="menu" onclick="log()" id="menu">Login</button>   
+    </div>
+    <div class="motto"><span id="eat">EAT</span> <span id="your">YOUR</span></div>
+    <div class="div3"><span id="mood">MoooD</span></div>
+    <div class="yap" id="yap">
+        <p id="typed"></p>
+    </div>
+    <a href="search.html" id="redirect"><div class="arrow liquid">
+        <span id="ar">→</span> 
+    </div></a>
+</div>
+
+<div class="parent1">
+    <span id="line1"><marquee direction="right" scrollamount="10">* LET YOUR MOOD PICK YOUR FOOD! *&nbsp;<span id="diffont">* LET YOUR MOOD PICK YOUR FOOD! *&nbsp;</span><span>* LET YOUR MOOD PICK YOUR FOOD! *</span></marquee></span>
+
+    <span id="line2"><marquee direction="left" scrollamount="15">* EAT WHAT YOU FEEL. LITERALLY. *&nbsp;<span id="diffont">* EAT WHAT YOU FEEL. LITERALLY. *&nbsp;</span><span>* EAT WHAT YOU FEEL. LITERALLY. *</span></marquee></span>
+
+    <span id="line3"><marquee direction="right" scrollamount="10">* CRAVING BASED ON YOUR FEELINGS — WE GOT YOU! *&nbsp;<span id="diffont">* CRAVING BASED ON YOUR FEELINGS — WE GOT YOU! *&nbsp;</span><span>* CRAVING BASED ON YOUR FEELINGS — WE GOT YOU! *</span></marquee></span>
+</div>
+
+<div class="parent2">
+    <div class="bigline">
+    <span>THIS IS MoooD.</span> 
+    <span>IT GETS YOUR VIBE—AND SERVES THE PERFECT BITE.</span>
+    </div>
+    <div class="img1">
+    <img src="../Assets/blue.jpg" id="blue" alt="blueimg">
+    </div>
+    <div class="img2">
+    <img src="../Assets/basil.jpg" id="basil" alt="basil">
+</div>
+
+    <div class="explain">
+        <span id="heading">LET YOUR FEELINGS FEED YOU.</span>
+        <span id="stuff">MoooD isn’t your typical food suggestion platform — it’s emotionally intelligent. We use AI to understand your current mood and combine it with real-time data like your location and local weather to recommend the perfect food. Feeling low on a rainy evening? We might suggest something warm and comforting. Celebrating under the sun? Expect something fresh and fun. With MoooD, your cravings aren’t random — they’re smart, personal, and always one step ahead of how you feel.</span>
+    </div>
+
+    <div class="img3">
+    <img src="/Assets/blueberry.jpg" alt="blueberry" id="blueberry">
+</div>
+
+   
+
+    <div class="login-popup" id="login-popup">
+        <div class="popup">
+            <div class="left"></div>
+            <div class="right">
+                <button class="close-popup" onclick="unlog()">X</button>
+                <h2 id="pp">Login</h2>
+                <h2 id="hh" style="display: none;">sign up</h2>
+                <form action="/login" method="POST">
+                    <table id="logg" >
+                  <tr><td><input type="text" name="username" placeholder="Username" required></td></tr>
+                  <tr><td><input type="password" name="password" placeholder="Password" required></td></tr>
+                  <tr><td></td></tr>
+                  <tr><td><button type="submit" class="subm">Login</button></td></tr>
+                    </table>
+
+                    <table id="sign" style="display: none;">
+                        <tr><td><input type="text" name="name" id="name" placeholder="Full Name" required></td></tr>
+                        <tr><td><input type="email" name="email" id="email" placeholder="Email ID" required></td></tr>
+                        <tr><td><input type="password" name="password" id="signup-password" placeholder="Password" required></td></tr>
+                        <tr><td><input type="password" name="confirm" id="confirm-password" placeholder="Confirm Password" required></td></tr>
+                        <tr><td><button type="submit" class="subm">Sign Up</button></td></tr>
+                    </table>
+
+                    <p id="pu">Don't have an account? <a href="#" onclick="showsign()">Create one :) </a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- <a href="search.html" id="redirect"> TRY NOW <div class="arrow liquid">
+        <span id="ar">→</span> 
+    </div></a> -->
+
+</div>
+
+</div>
+</div>
+
+<div class="suggestions">
+    <div class="suggestions-title">Give these a try as well.</div>
+    <div class="s1">
+        <span id="s1H">AI-Powered Mood Detection</span>
+        <span id="s1D">MoooD uses smart AI to sense your current mood—whether you're hyped, tired, moody, or mellow—and finds the perfect bite to match.</span>
+    </div>
+    <div class="s2"></div>
+    <div class="s3"></div>
+    <div class="s4"></div>
+</div>
+    
+
+<div class="footer">
+    <p class="footer-head">HAVE A QUESTION ? THEN THERE'S AN ANSWER.</p>
+
+    <form action="/submit" method="post">
+        <table class="feedback">
+            <tr id="m">
+                <td>Name :<br><input type="text" required id="name"></td>
+                <td>Phone :<br><input type="tel" required id="ph"></td>
+                <td>Email :<br><input type="email" required id="email"></td>
+            </tr>
+
+            <tr>
+                <td colspan="2">Subject of matter :<br><input type="text" required id="subject"></td>
+                <td>City :<br><input type="text" id="city"></td>
+            </tr>
+
+            <tr>
+                <td colspan="3">Message<br><input type="text" required id="msg"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><button type="submit" id="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+
+    <div class="footnote">
+    <a href="https://github.com/anuvindmp/Moood" target="_blank">Made with &hearts;</a>
+    </div>
+      
+</body>
+</html>

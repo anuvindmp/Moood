@@ -241,7 +241,7 @@ input:focus {
 .feedback {
   width: 90vh;
   position: absolute;
-  left: 100px;
+  left: 6vw;
 }
 
 #name,
@@ -361,4 +361,14 @@ input:focus {
   color: #B00E2F;
   border: #B00E2F solid 1px;
   transition: 0.5s ease-in
+}
+
+.suggestions img{
+  width: 15vw;
+}
+
+.s1,.s2,.s3,.s4{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
