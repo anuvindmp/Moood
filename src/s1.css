@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fee5ca;
+    padding: 0 1rem;
+}
+
+.nav {
+    display: flex;
+    justify-content: start;
+}
+
+#logo {
+    padding-left: 3rem;
+    padding-top: 1.5rem;
+    height: 100px;
+    max-width: 100%;
+}
+
+.body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.5rem 1rem;
+    color: #b00e2f;
+}
+
+h2 {
+    font-size: clamp(24px, 5vw, 41px);
+}
+
+.sideimg, .sideimg1 {
+    display: none; /* Hide on smaller screens */
+}
+
+@media (min-width: 1440px) {
+    .sideimg{
+        display: flex;
+        position: absolute;
+        right: 0;
+        height: 500px;
+    }
+    
+    .sideimg1{
+        display: flex;
+        position: absolute;
+        left: 0;
+        height: 500px;
+    
+}
+}
+
+.input_text {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    padding-left: 1rem;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 2rem;
+    padding-top: 2.5rem;
+}
+
+.location input{
+    border-radius: 10px;
+    height: 50px;
+    width: 250px;
+    border: rgb(94, 92, 92);
+}
+
+.mood input{
+    border-radius: 10px;
+    height: 50px;
+    width: 400px;
+    border: rgb(94, 92, 92);
+}
+
+input::placeholder {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Veg check */
+.veg {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.checkbox {
+    transform: scale(1.5);
+}
+
+#veg_label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Tiles layout */
+.tiles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 2rem;
+    gap: 2.5rem;
+}
+
+.tile1 {
+    background-color: white;
+    height: auto;
+    width: 200px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+.tile1 img {
+    height: auto;
+    max-width: 100%;
+    padding-top: 1rem;
+}
+
+h1 {
+    padding-top: 4rem;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+}
