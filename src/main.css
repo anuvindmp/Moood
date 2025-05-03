@@ -3,3 +3,101 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'glosta';
+    src: url('/Assets/glosta/Glosta\ Expanded210707\ 0026.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'cervo2';
+    src: url('/Assets/Cervo/Cervo-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+body{
+    background-color: #fee5ca;
+}
+
+#logo{
+    height: 100px;
+}
+
+.nav {
+    display: flex;
+    justify-content: start;
+}
+
+.menu{
+    position: absolute;
+    top: 30px;
+    right:50px;
+    background-color: #FEE5CA;
+    z-index: 2;
+    width: 100px;
+    height: 43px;
+    font-family: 'poppins';
+    font-size: 1.1vw;
+    color: #B00E2F;
+    text-align: center;
+    border: #B00E2F solid 1px;
+}
+  
+.menu:hover{
+    background-color: #B00E2F;
+    color: #FEE5CA;
+    border: #FEE5CA solid 1px;
+    transition: 0.5s ease-in
+}
+  
+.close{
+    position: absolute;
+    top: 30px;
+    right:50px;
+    background-color: #B00E2F;
+    z-index: 3;
+    width: 100px;
+    height: 43px;
+    font-family: 'poppins';
+    font-size: 20px;
+    color: #FEE5CA;
+    text-align: center;
+    border: #FEE5CA solid 1px;
+}
+  
+.close:hover{
+    background-color: #FEE5CA;
+    color: #B00E2F;
+    border: #B00E2F solid 1px;
+    transition: 0.5s ease-in
+}
+  
+.motto{
+    font-family: 'glosta';
+    color: #B00E2F;
+    font-size: 10vw;
+    padding-left: 9rem;
+}
+
+.body{
+    display: flex;
+    padding-top: 4rem;
+}
+
+.yap{
+    font-family: "Poppins", sans-serif;
+    font-size: 1vw;
+    font-weight: bold;
+    display: flex;
+    width: 656w;
+    padding-top: 2rem;
+    padding-right: 5rem;
+}
