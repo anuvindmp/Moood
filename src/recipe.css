@@ -18,112 +18,9 @@
   font-style: normal;
 }
 
-
-
-/* logo */
-.anim {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  font-size: 10px;
-  display: inline-block;
-  color: #B00E2F;
+#logo{
+  height: 100px;
 }
-
-.key {
-  font-size: 3vw;
-  display: inline-block;
-  font-family: 'cervo1';
-  letter-spacing: -4px;
-  transition: transform 0.2s;
-}
-
-@keyframes pressDown1 {
-
-  30%,
-  40%,
-  100% {
-    transform: translateY(0);
-  }
-
-  35% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes pressDown2 {
-
-  70%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-
-  75% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes pressDown3 {
-
-  30%,
-  40%,
-  100% {
-    transform: translateY(0);
-  }
-
-  35% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes pressDown4 {
-
-  40%,
-  50%,
-  100% {
-    transform: translateY(0);
-  }
-
-  45% {
-    transform: translateY(10px);
-  }
-}
-
-@keyframes pressDown5 {
-
-  20%,
-  30%,
-  100% {
-    transform: translateY(0);
-  }
-
-  25% {
-    transform: translateY(10px);
-  }
-}
-
-.key:nth-child(1) {
-  animation: pressDown1 2s infinite;
-}
-
-.key:nth-child(2) {
-  animation: pressDown2 3s infinite;
-}
-
-.key:nth-child(3) {
-  animation: pressDown3 4s infinite;
-}
-
-.key:nth-child(4) {
-  animation: pressDown4 2.5s infinite;
-}
-
-.key:nth-child(5) {
-  animation: pressDown5 2.5s infinite;
-}
-
-/* logo */
 
 html {
   scroll-behavior: smooth;
@@ -135,12 +32,6 @@ body {
   background-color: #FEE5CA;
 }
 
-.logo {
-  width: 160px;
-  height: 80px;
-  padding: 10px;
-  position: fixed;
-}
 
 .parent {
   display: grid;
