@@ -299,6 +299,7 @@ body{
 
 .right p{
     font-size: .8rem;
+    
 }
 
 h2{
@@ -422,6 +423,7 @@ input {
     text-align: center;
     font-size: 5vw;
     color: #B00E2F;
+    padding-top: 5vh;
   }
   
   .s1 {
@@ -432,8 +434,16 @@ input {
     border-radius: 30px 0 0 30px;
     height: 90%;
     margin-left: 20px;
-    justify-content: center;
-  
+    /* justify-content: center; */
+    background-image: url(/Assets/mood2.png);
+    background-size: contain;
+    background-repeat:no-repeat ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    text-align: center;
+    padding: 0.5rem;
   }
   
   .s2 {
@@ -444,6 +454,15 @@ input {
     background-color: white;
     border-radius: 0 30px 30px 0;
     height: 90%;
+    background-image: url(/Assets/loc2.png);
+    background-size: contain;
+    background-repeat:no-repeat ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    text-align: center;
+    padding: 0.5rem;
   }
   
   .s3 {
@@ -454,6 +473,16 @@ input {
     background-color: white;
     border-radius: 30px 0 0 30px;
     height: 90%;
+    background-image: url(/Assets/weather.jpg);
+    background-size: cover;
+    background-repeat:no-repeat ;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    text-align: center;
+    padding:0.5rem;
+    padding-top: 0.5rem;
   }
   
   .s4 {
@@ -465,111 +494,146 @@ input {
     border-radius: 0 30px 30px 0;
     height: 90%;
     margin-right: 20px;
+    background-image: url(/Assets/persona2.png);
+    background-size: contain;
+    background-repeat:no-repeat ;
+    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    text-align: center;
   }
   
-  .sug1{
-    width: 90%;
-  }
-
-  
-  .footer {
-    position: absolute;
-    top: 570vh;
-    height: 100%;
-    width: 100%;
-    background-color: #B00E2F;
-    z-index: -2;
-    color: white;
+#s-title {
+    grid-column: span 2 / span 2;
     font-family: 'cervo1';
-  }
-  
-  .footer-head {
-    position: absolute;
-    font-size: 5vw;
-    top: 12vh;
-    width: 100%;
-    text-align: center;
-  }
-  
-  form {
-    position: absolute;
-    top: 40vh;
-    font-size: 1vw;
-    font-family: 'poppins';
-  }
-  
-  input {
-    border: none;
-    border-bottom: 1px solid white;
-    background: transparent;
-    outline: none;
-    color: white
-  }
-  
-  input:focus {
-    border-bottom: 1px dotted white;
-  
-  }
-  
-  .feedback {
-    width: 90vh;
-    position: absolute;
-  }
-  
-  #name,
-  #ph,
-  #email,
-  #city {
-    width: 26vw;
-    margin: 0px 60px 60px 0px;
-  }
-  
-  #subject {
-    width: 52vw;
-    margin: 0px 60px 60px 0px;
-  }
-  
-  #msg {
-    width: 86vw;
-    margin: 0px 60px 60px 0px;
-  }
-  
-  #submit {
-    background-color: #B00E2F;
-    border: 1px solid white;
-    color: white;
-    font-family: 'poppins';
-    width: 100px;
-    height: 40px;
-    font-size: 1vw;
-    box-shadow: 0 2px 5px 0 white;
-  
-  }
-  
-  #submit:hover {
     color: #B00E2F;
-    background-color: white;
-    transition: 0.5s ease-in;
-  }
+    font-size: 3rem;
+    padding-top: 5vh;
+}
+
+#s-desc {
+    grid-column: span 2 / span 2;
+    grid-row: span 4 / span 4;
+    grid-row-start: 2;
+    font-family: 'Poppins';
+    color:black;
+    font-size: 1rem;
+}
+
+
+
+.s1-desc,.s2-desc{
+  margin-top: 2rem;
+}
+
+.s3-desc{
+  margin-top: 1.5rem;
+}
+
+.s4-desc{
+  margin-top: 1.2rem;
+}
   
-  .footnote a {
-    position: absolute;
-    bottom: 2vh;
-    color: white;
-    font-family: 'poppins';
-    width: 100%;
-    text-align: center;
-    text-decoration: none;
-    transition: 0.3s;
-  }
-  
+.footer {
+  position: absolute;
+  top: 570vh;
+  height: 100%;
+  width: 100%;
+  background-color: #B00E2F;
+  z-index: -2;
+  color: white;
+  font-family: 'cervo1';
+}
+
+.footer-head {
+  position: absolute;
+  font-size: 5vw;
+  top: 12vh;
+  width: 100%;
+  text-align: center;
+}
+
+form {
+  position: absolute;
+  top: 33vh;
+  font-size: 1vw;
+  font-family: 'poppins';
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid white;
+  background: transparent;
+  outline: none;
+  color: white
+}
+
+input:focus {
+  border-bottom: 1px dotted white;
+
+}
+
+.feedback {
+  width: 90vh;
+  position: absolute;
+}
+
+#name,
+#ph,
+#email,
+#city {
+  width: 26vw;
+  margin: 0px 60px 60px 0px;
+}
+
+#subject {
+  width: 52vw;
+  margin: 0px 60px 60px 0px;
+}
+
+#msg {
+  width: 86vw;
+  margin: 0px 60px 60px 0px;
+}
+
+#submit {
+  background-color: #B00E2F;
+  border: 1px solid white;
+  color: white;
+  font-family: 'poppins';
+  width: 100px;
+  height: 40px;
+  font-size: 1vw;
+  box-shadow: 0 2px 5px 0 white;
+
+}
+
+#submit:hover {
+  color: #B00E2F;
+  background-color: white;
+  transition: 0.5s ease-in;
+}
+
+.footnote a {
+  position: absolute;
+  bottom: 2vh;
+  color: white;
+  font-family: 'poppins';
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
 .footnote a:hover {
-    text-decoration: underline;
-  
-  }
+  text-decoration: underline;
+
+}
   
 
-.s1{
+/* .s1{
     display: flex;
     flex-direction: column;
     font-size: 1,5vw;
@@ -580,4 +644,4 @@ input {
 #s1H{
   font-family: 'cervo2';
   font-size: 2.5vw;
-}
+} */

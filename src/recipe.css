@@ -133,7 +133,7 @@ li {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(5, 1fr);
   gap: 8px;
-  height: 90vh;
+  height: 70vh;
   background-color: #FEE5CA;
   border-radius: 50px;
   padding-bottom: 50px;
@@ -194,14 +194,9 @@ li {
   width: 90%;
 }
 
-
-
-
-
-
 .footer {
   position: absolute;
-  top: 235vh;
+  top: 225vh;
   height: 100%;
   width: 100%;
   background-color: #B00E2F;
@@ -313,7 +308,7 @@ input:focus {
  
 }
 
-.dropdown td:hover{
+.dropdown a:hover{
   color: #FEE5CA;
   transition: 0.3s ease-in;
 }
@@ -371,4 +366,10 @@ input:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+
+.dropdown a{
+  text-decoration: none;
+  color: white;
 }
