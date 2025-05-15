@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Mooood</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <!-- Background Video -->
+    <video id="bg-video" autoplay muted loop>
+        <source src="/Assets/bgfood.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Login Panel -->
+    <div class="login-wrapper">
+        <div class="login-container">
+            <span class="login-title">Login</span>
+            <form>
+                <div class="field">
+                    <div class="field-header"><p class="field-title">Username</p><p class="error-field" id="user-error">Invalid Username</p></div>
+                    <input type="text" placeholder="Username" required class="field-control">    
+                </div>
+                <div class="field">
+                    <div class="field-header"><p class="field-title">Password</p><p class="error-field" id="pass-error">Invalid Password</p></div>
+                    <input type="password" placeholder="Password" required class="field-control">
+                </div>
+                <div class="login-btn-wrapper"><button type="submit" id="login-btn">Sign In</button></div>
+            </form>
+            <div class="signup-link">
+                Don't have an account? <a href="signup.html">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+</html>

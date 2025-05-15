@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <link id="style" rel="stylesheet" type="text/css" href="s1.css">
     <title>Search</title>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const overlay = document.getElementById('fade-wrap');
+            if (overlay) {
+                overlay.style.opacity = '0';
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 300);
+            }
+        });
+    </script>
+    <style>
+        #fade-wrap {
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            opacity: 1;
+            z-index: 999;
+            pointer-events: auto;
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </head>
 
 <body>
+    <div id="fade-wrap"></div>
     <div class="nav">
         <img src="../Assets/logo-removebg-preview.png" id="logo" alt="logo">
     </div>
@@ -19,47 +48,47 @@
         <div class="sideimg1">
             <img src="../Assets/Veggies_new.avif" alt="sushi" id="veggie">
         </div>
-        
+
         <div class="searchbar">
             <h2>Find the perfect food to match your MoooD!</h2>
             <div class="inputs">
-            <div class="location">
-                <input type="text" placeholder="📍 Enter your location" class="input_text" name="location">
+                <div class="location">
+                    <input type="text" placeholder="📍 Enter your location" class="input_text" name="location">
+                </div>
+                <div class="mood">
+                    <input type="text" placeholder="Tell us how you are feeling..." class="input_text" name="mood">
+                </div>
+                <div class="veg">
+                    <label for="veg" id="veg_label">Pure Veg</label>
+                    <input type="checkbox" class="checkbox" id="veg" name="veg">
+                </div>
             </div>
-            <div class="mood">
-                <input type="text" placeholder="Tell us how you are feeling..." class="input_text" name="mood">
-            </div>
-            <div class="veg">
-                <label for="veg" id="veg_label">Pure Veg</label>
-                <input type="checkbox" class="checkbox" id="veg" name="veg">
-            </div>
-        </div>
 
-        <h1>Popular Dishes</h1>
+            <h1>Popular Dishes</h1>
 
-        <div class="tiles">
-            <a href="recipe.html">
-            <div class="tile1">
-                <img src="../Assets/Dosa.avif" alt="dosa" id="dosa">
-            </div>
-        </a>
-        <a href="recipe.html">
-            <div class="tile1">
-                <img src="../Assets/Biryani.avif" alt="biryani" id="dosa">
-            </div>
-        </a>
-        <a href="recipe.html">
-            <div class="tile1">
-                <img src="../Assets/Idli.avif" alt="idli" id="dosa">
-            </div>
-        </a>
-        <a href="recipe.html">
-            <div class="tile1">
-                <img src="../Assets/Noodles.avif" alt="Noodles" id="dosa">
-            </div>
-        </a>
+            <div class="tiles">
+                <a href="recipe.html">
+                    <div class="tile1">
+                        <img src="../Assets/Dosa.avif" alt="dosa" id="dosa">
+                    </div>
+                </a>
+                <a href="recipe.html">
+                    <div class="tile1">
+                        <img src="../Assets/Biryani.avif" alt="biryani" id="dosa">
+                    </div>
+                </a>
+                <a href="recipe.html">
+                    <div class="tile1">
+                        <img src="../Assets/Idli.avif" alt="idli" id="dosa">
+                    </div>
+                </a>
+                <a href="recipe.html">
+                    <div class="tile1">
+                        <img src="../Assets/Noodles.avif" alt="Noodles" id="dosa">
+                    </div>
+                </a>
 
-        </div>
+            </div>
         </div>
 
         <div class="sideimg">

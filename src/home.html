@@ -11,21 +11,25 @@
     <title>Home</title>
 </head>
 <body>
-    
+    <div id="fade-wrap"></div>
 
 
 
 <div class="parent">
+    <video id="bg-video" autoplay muted loop>
+        <source src="/Assets/bgfood.mp4" type="video/mp4">
+        Your browser does not support the videos.
+    </video>
     <div class="nav">
         <img src="../Assets/logo-removebg-preview.png" id="logo" alt="logo">
-        <button class="menu" onclick="log()" id="menu">Login</button>   
+        <button class="menu" id="menu" onclick="redirect()">Login</button>   
     </div>
     <div class="motto"><span id="eat">EAT</span> <span id="your">YOUR</span></div>
     <div class="div3"><span id="mood">MoooD</span></div>
     <div class="yap" id="yap">
         <p id="typed"></p>
     </div>
-    <a href="search.html" id="redirect"><div class="arrow liquid">
+    <a href="#" id="redirect" onclick="searchswitch()"><div class="arrow liquid">
         <span id="ar">→</span> 
     </div></a>
 </div>
@@ -58,37 +62,6 @@
     <div class="img3">
     <img src="/Assets/blueberry.jpg" alt="blueberry" id="blueberry">
 </div>
-
-   
-
-    <div class="login-popup" id="login-popup">
-        <div class="popup">
-            <div class="left"></div>
-            <div class="right">
-                <button class="close-popup" onclick="unlog()">X</button>
-                <h2 id="pp">Login</h2>
-                <h2 id="hh" style="display: none;">sign up</h2>
-                <form action="/login" method="POST">
-                    <table id="logg" >
-                  <tr><td><input type="text" name="username" placeholder="Username" required></td></tr>
-                  <tr><td><input type="password" name="password" placeholder="Password" required></td></tr>
-                  <tr><td></td></tr>
-                  <tr><td><button type="submit" class="subm">Login</button></td></tr>
-                    </table>
-
-                    <table id="sign" style="display: none;">
-                        <tr><td><input type="text" name="names" id="names" placeholder="Full Name" required></td></tr>
-                        <tr><td><input type="email" name="email" id="mail" placeholder="Email ID" required></td></tr>
-                        <tr><td><input type="password" name="password" id="signup-password" placeholder="Password" required></td></tr>
-                        <tr><td><input type="password" name="confirm" id="confirm-password" placeholder="Confirm Password" required></td></tr>
-                        <tr><td><button type="submit" class="subm">Sign Up</button></td></tr>
-                    </table>
-
-                    <p id="pu">Don't have an account? <a href="#" onclick="showsign()">Create one :) </a></p>
-                </form>
-            </div>
-        </div>
-    </div>
     
 </div>
 

@@ -16,71 +16,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-  const username = document.getElementById('username').value.trim();
-  const password = document.getElementById('password').value.trim();
-  const error = document.getElementById('error');
-  
-  if (!username || !password) {
-      e.preventDefault();
-      error.textContent = 'Please fill in both fields.';
-  } else {
-      error.textContent = '';
-  }
-  });
-
-  
-  
-  
-  function log() {
-      const popup = document.getElementById("login-popup");
-      document.getElementById("menu").style.display = "none";
-      popup.style.display = "flex"; 
-  }
-  
-  function unlog() {
-      const popup = document.getElementById("login-popup");
-      popup.style.display = "none";
-      document.getElementById("menu").style.display = "block";
-  }
-
-
-  function showsign() {
-    document.getElementById("logg").style.display = "none";
-    document.getElementById("pp").style.display = "none";
-    document.getElementById("pu").style.display = "none";
-    document.getElementById("sign").style.display = "block";
-    document.getElementById("hh").style.display = "block";
+function redirect(){
+  window.location.href = "login.html";
 }
 
-function validateForm() {
-  const signFormVisible = document.getElementById("sign").style.display !== "none";
-  if (!signFormVisible) {
-      return true; // No validation for login form
-  }
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("signup-password").value;
-  const confirm = document.getElementById("confirm-password").value;
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!name || !email || !password || !confirm) {
-      alert("Please fill all signup fields.");
-      return false;
-  }
-  if (!emailRegex.test(email)) {
-      alert("Please enter a valid email.");
-      return false;
-  }
-  if (password.length < 6) {
-      alert("Password must be at least 6 characters.");
-      return false;
-  }
-  if (password !== confirm) {
-      alert("Passwords do not match.");
-      return false;
-  }
-
-  return true;
+function searchswitch(){
+  document.getElementById('fade-wrap').style.opacity = '1';
+  setTimeout(function(){
+    window.location.href = "search.html";}, 300)
 }
