@@ -1,0 +1,166 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'cig';
+    src: url('/Assets/ciguatera.otf');
+}
+
+body{
+    background-color: #fee5ca;
+    padding: 40px;
+    background-image: url(/Assets/blob-scene-haikei.png);
+    background-size: cover;
+}
+
+.nav span{
+    font-family: "cig", 'sans-serif';
+    font-weight: bolder;
+    font-size: 2rem;
+}
+.nav {
+  position: relative;
+  height: 60px;
+  border-bottom: 1px solid black;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  margin-bottom: 50px;
+}
+
+
+#logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #B00E2F;
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-family: 'cig', sans-serif;
+  transition: font-size 0.3s ease;
+}
+
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: "cig";
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 20px;
+}
+
+.nav-links li a:hover {
+  color: #B00E2F;
+}
+
+#hi {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: bold;
+  color: #B00E2F;
+  white-space: nowrap;
+}
+
+
+.filter-search {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.filter-search select,
+.filter-search input {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  width: 200px;
+  font-family: 'Poppins';
+}
+
+.recipe-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  padding: 0 60px;
+  margin-bottom: 60px;
+  font-family: 'Poppins';
+}
+
+
+
+.recipe-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.recipe-card:hover {
+  transform: scale(1.03);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.recipe-info {
+  position: absolute;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: #b00e2ec0;
+  color: white;
+  padding: 15px;
+  box-sizing: border-box;
+  transition: bottom 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipe-card:hover .recipe-info {
+  bottom: 0;
+}
+
+.recipe-info h3 {
+  margin: 0 0 5px;
+  font-size: 25px;
+  font-family: "cig", sans-serif;
+}
+
+.recipe-info p {
+  margin: 0;
+  font-size: 14px;
+  font-family: 'Poppins';
+  opacity: 0.8;
+}
+
