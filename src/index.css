@@ -154,7 +154,7 @@
 
         /* Section 2 - Better Food */
         .better-food {
-            min-height: 100vh;
+            min-height: 110vh;
            background: linear-gradient(135deg, #fee5ca 0%, #fbd9ba 100%);
 
             display: flex;
