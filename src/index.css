@@ -41,7 +41,7 @@
             text-align: center;
             color: white;
             position: relative;
-            padding-top: 200px;
+            padding-top: 180px;
         }
 
         .hero::before {
@@ -130,6 +130,7 @@
             font-size: 0.9rem;
             animation: bounce 2s infinite;
             cursor: pointer;
+           
         }
 
         @keyframes bounce {
