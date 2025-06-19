@@ -226,12 +226,18 @@ body{
     color: white;
     padding-top: 2rem;
     height: 270vh;
+    padding-left: 2vw;
+    padding-right: 2vw;
+}
+
+.parent2 img{
+  scale: 0.7;
 }
 
 .bigline{
     display: flex;
     flex-direction: column;
-    font-size: 8vw;
+    font-size: 6vw;
     text-align: center;
 }
 
