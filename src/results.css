@@ -206,6 +206,14 @@ z-index: 10;
 text-align: center;
 }
 
+a{
+  text-decoration: none;
+}
+
+a::after{
+  text-decoration: none;
+}
+
 .buttons::before { 
 content: "";
 height: 100%;
@@ -230,12 +238,107 @@ background-color: #fee5ca;
 text-decoration: none;
 }
 
-.buttons:hover { 
+.b2{
+border-color: black;
+color: black;
+text-decoration: none;
+}
+
+.b2::before{
+background-color: #B00E2F;
+text-decoration: none;
+}
+
+.b2:hover{
+color: white;
+text-decoration: none;
+}
+
+.b1:hover { 
 color: black;
 }
 
 .buttons:hover::before { 
 transform: scaleY(1);
+}
+
+.cluster{
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+.popup-card {
+  position: fixed;
+  top: 30%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  background: #fee5ca;
+  padding: 2rem;
+  width: 500px;
+  height: auto;
+  border-radius: 10px;
+  opacity: 0;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.popup-card.show {
+  display: block;
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.popup-card img {
+  width: 50%;
+  height: auto;
+  border-radius: 8px;
+  margin-left: 7rem;  
+}
+
+.popup-card h2, .popup-card h3 {
+  margin: 0.5rem 0;
+  color: #B00E2F;
+}
+
+.popup-card p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.popup-card ul {
+  padding-left: 1.5rem;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
 }
 
   @media (max-width: 900px) {

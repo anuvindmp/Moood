@@ -8,6 +8,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <title>Results Page</title>
   <link rel="stylesheet" href="results.css">
+  <script>
+  // Sample data: Map dish titles to restaurants
+  const restaurantMap = {
+    "Masala Dosa": ["Dosa Corner", "Udupi Café", "Sambar & Chutney"],
+    "Paneer Butter Masala": ["Tandoori Express", "The Curry Pot", "Spice Lounge"]
+    // Add more dishes here
+  };
+
+  // Called when "Where to Eat" button is clicked
+  function openPopup(buttonEl) {
+    const cardEl = buttonEl.closest('.card');
+    if (!cardEl) return;
+
+    const title = cardEl.querySelector('.card-front .title')?.textContent.trim() || "Unknown Dish";
+    const image = cardEl.querySelector('.card-front img')?.src || "";
+    const desc = cardEl.querySelector('.card-back .description')?.textContent.trim() || "No description available.";
+
+    document.getElementById("popupTitle").textContent = title;
+    document.getElementById("popupImg").src = image;
+    document.getElementById("popupDesc").textContent = desc;
+
+    const restaurantList = document.getElementById("popupRestaurants");
+    restaurantList.innerHTML = "";
+    const restaurants = restaurantMap[title] || ["No data available"];
+    restaurants.forEach(r => {
+      const li = document.createElement("li");
+      li.textContent = r;
+      restaurantList.appendChild(li);
+    });
+
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popupCard");
+
+    // Make visible
+    overlay.style.display = "block";
+    popup.style.display = "block";
+
+    // Trigger animation
+    requestAnimationFrame(() => {
+      overlay.classList.add("show");
+      popup.classList.add("show");
+    });
+  }
+
+  // Closes the popup
+  function closePopup() {
+    const overlay = document.getElementById("overlay");
+    const popup = document.getElementById("popupCard");
+
+    overlay.classList.remove("show");
+    popup.classList.remove("show");
+
+    // Wait for animation to finish before hiding
+    setTimeout(() => {
+      overlay.style.display = "none";
+      popup.style.display = "none";
+    }, 300); // Match CSS transition duration
+  }
+</script>
+
+
 </head>
 <body>
     <div class="nav">
@@ -19,9 +80,6 @@
   </ul>
   <span id="hi">Whats your Mood Harish?</span>
 </div>
-
-  </div>
-
   <div class="with-heading">
     <h1>Our Suggestions</h1>
   <div class="results-container">
@@ -31,7 +89,7 @@
       <img src="../Assets/dosa.png" alt="Masala Dosa">
       <div class="card-content">
         <div class="title">Masala Dosa</div>
-        <div class="author">Davidson Aguiar</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -40,11 +98,11 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
       </div>
     </div>
@@ -56,7 +114,7 @@
       <img src="../Assets/blueberry.jpg" alt="Results summary component">
       <div class="card-content">
         <div class="title">Panner Butter Masala</div>
-        <div class="author">Greece Powerball</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -65,11 +123,11 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
       </div>
     </div>
@@ -81,7 +139,7 @@
       <img src="../Assets/blue_aesthetic.jpg" alt="Results summary">
       <div class="card-content">
         <div class="title">Ice cream</div>
-        <div class="author">Vetri Suriya</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -90,11 +148,11 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
       </div>
     </div>
@@ -106,7 +164,7 @@
       <img src="https://shots.codepen.io/davidsdearaujo/pen/GRPGPZY-512.jpg" alt="Results summary component">
       <div class="card-content">
         <div class="title">Chicken Biriyani</div>
-        <div class="author">Davidson Aguiar</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -115,11 +173,11 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
       </div>
     </div>
@@ -131,7 +189,7 @@
       <img src="https://shots.codepen.io/greecepowerball/pen/MWXyGYW-512.jpg" alt="Greece Powerball">
       <div class="card-content">
         <div class="title">Puttu and kadala</div>
-        <div class="author">Greece Powerball</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -140,11 +198,11 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
       </div>
     </div>
@@ -156,7 +214,7 @@
       <img src="https://shots.codepen.io/vetrisuriya/pen/qBzPYGm-512.jpg" alt="Results summary">
       <div class="card-content">
         <div class="title">Results summary 2</div>
-        <div class="author">Vetri Suriya</div>
+        <div class="author">To feed your cravings</div>
       </div>
     </div>
     <div class="card-back">
@@ -165,16 +223,37 @@
         <div class="description">
            A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
         </div>
-        <a href="#"><div class="buttons b1">
-          Order online
+        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
+          Where to Eat
         </div></a>
         <a href="#"><div class="buttons b1">
-          Recipe
+          Find Recipe
         </div></a>
     </div>
       </div>
     </div>
   </div>
   </div>
+
+<!-- Overlay -->
+<div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+<!-- Popup Modal -->
+<div class="popup-card" id="popupCard">
+  <span class="close-btn" onclick="closePopup()">&times;</span>
+  <h2 id="popupTitle">Dish Name</h2>
+  <img id="popupImg" src="" alt="Dish Image">
+  <p id="popupDesc"></p>
+  <h3>Available at:</h3>
+  <ul id="popupRestaurants"></ul>
+  <div class="cluster">
+  <a href="#"><div class="buttons b2">
+    View Recipe
+        </div></a>  
+  <a href="#"><div class="buttons b2">
+          Order Online
+        </div></a>
+  </div>
+</div>
 </body>
 </html>
