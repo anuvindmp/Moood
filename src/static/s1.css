@@ -372,3 +372,58 @@ input[type="range"] {
     border-radius: 50%;
     cursor: pointer;
   }
+
+  .submit {
+  background-color: #ffc1aa;
+  border: 0.5px solid;
+  border-radius: .5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  overflow: hidden;
+  padding: .7rem .75rem;
+  position: relative;
+  text-decoration: none;
+  transition: all .3s ease;
+  width: 90%;
+  z-index: 10;
+  text-align: center;
+}
+
+
+.submit::before { 
+  content: "";
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: scaleY(0);
+  transition: all .3s ease;
+  width: 100%;
+  z-index: -1;
+  text-decoration: none;
+}
+
+.submit:hover::before { 
+  transform: scaleY(1);
+}
+
+.submit:hover { 
+  color: white;
+  border-color: #B00E2F;
+}
+
+.b1{
+  color: #b00e2f;
+  text-decoration: none;
+  max-width: 150px;
+}
+
+.b1::before{
+  background-color: #B00E2F;
+  text-decoration: none;
+}
+
+.btns{
+    display: flex;
+    justify-content: center;
+}

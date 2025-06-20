@@ -108,7 +108,7 @@
   <div class="form-group">
     <div class="slider-container">
   <label for="hunger">Hunger Level:</label>
-  <input type="range" id="hunger" name="hunger" min="1" max="4" step="1" value="1">
+  <input type="range" id="hunger" name="hunger" min="1" max="4" step="1" value="1" required>
   <div class="slider-labels">
 <span>🥪 Snack</span>
 <span>🍜 Normal</span>
@@ -122,7 +122,7 @@
   <!-- Cravings -->
   <div class="form-group">
     <label>What are you craving?</label>
-    <div class="cravings-options">
+    <div class="cravings-options" required>
       <label><input type="radio" name="craving" value="sweet" /> 🍫 Sweet</label>
       <label><input type="radio" name="craving" value="spicy" /> 🌶️ Spicy</label>
       <label><input type="radio" name="craving" value="savory" /> 😋 Savory</label>
@@ -135,8 +135,7 @@
   <!-- Cuisine -->
   <div class="form-group">
     <label for="cuisine">Preferred Cuisine</label>
-    <select name="cuisine" id="cuisine" class="input_text">
-      <option value="">Select cuisine</option>
+    <select name="cuisine" id="cuisine" class="input_text" required>
       <option value="indian">🍛 North Indian</option>
       <option value="japanese">🥥 South Indian</option>
       <option value="chinese">🥡 Chinese</option>
@@ -144,6 +143,9 @@
       <option value="american">🍔 American</option>
     </select>
   </div>
+<div class="btns"> <button class="submit b1">Eat Your Mood</button></div>
+  
+
 </div>
 
 

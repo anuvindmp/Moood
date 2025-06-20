@@ -6,9 +6,36 @@
     <title>Login</title>
     <link rel="stylesheet" href="login.css">
     <link rel="icon" href="Assets/logo.svg">
-</head>
+<script>
+          window.addEventListener("DOMContentLoaded", () => {
+        const overlay = document.getElementById("fade-wrap");
+        if (overlay) {
+          overlay.style.opacity = "0";
+          setTimeout(() => {
+            overlay.style.display = "none";
+          }, 300);
+        }
+      });
+</script>
 
-<body>
+    <style>
+      #fade-wrap {
+        background-color: #000;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        opacity: 1;
+        z-index: 999;
+        pointer-events: auto;
+        transition: opacity 0.3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="fade-wrap"></div>
 
  <video id="bg-video" autoplay muted loop>
         <source src="/Assets/bgfood.mp4" type="video/mp4">
