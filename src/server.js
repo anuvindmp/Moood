@@ -23,7 +23,19 @@ const userSchema = new mongoose.Schema({
     password: { type: String, required: true }
 });
 
+const recipeSchema = new mongoose.Schema({
+    title: String,
+    ingredients: [String],
+    serves: String,
+    toServe: [String],
+    method: [String],
+    imageUrl: String,
+    username: String  // Used to associate recipe with user
+});
+
 const User = mongoose.model('User', userSchema);
+const Recipe = mongoose.model('Recipe', recipeSchema);  // collection: recipes
+
 
 // Routes
 app.post('/signup', async (req, res) => {
@@ -56,6 +68,29 @@ app.post('/login', async (req, res) => {
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Login error' });
+    }
+});
+
+
+app.post('/save-recipe', async (req, res) => {
+    const { title, ingredients, serves, toServe, method, imageUrl, username } = req.body;
+
+    try {
+        const recipe = new Recipe({
+            title,
+            ingredients,
+            serves,
+            toServe,
+            method,
+            imageUrl,
+            username
+        });
+
+        await recipe.save();  // MongoDB will auto-create the collection if it doesn't exist
+        res.status(200).json({ message: 'Recipe saved successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Failed to save recipe' });
     }
 });
 
