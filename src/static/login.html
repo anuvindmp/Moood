@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Mooood</title>
-        <link rel="icon" href="/Assets/logo.png">
+    <link rel="icon" href="/Assets/logo.png">
     <link rel="stylesheet" href="login.css">
 </head>
 
@@ -12,7 +12,7 @@
 
     <!-- Background Video -->
     <video id="bg-video" autoplay muted loop>
-        <source src="/Assets/bgfood.mp4" type="video/mp4">
+        <source src="/Assets/bottle-for-mk.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -20,13 +20,19 @@
     <div class="login-wrapper">
         <div class="login-container">
             <span class="login-title">Login</span>
-            <form>
+            <form action="/login" method="post" id="login-form">
                 <div class="field">
-                    <div class="field-header"><p class="field-title">Username</p><p class="error-field" id="user-error">Invalid Username</p></div>
-                    <input type="text" placeholder="Username" required class="field-control">    
+                    <div class="field-header">
+                        <p class="field-title">Username</p>
+                        <p class="error-field" id="user-error">Invalid Username</p>
+                    </div>
+                    <input type="text" placeholder="Username" required class="field-control">
                 </div>
                 <div class="field">
-                    <div class="field-header"><p class="field-title">Password</p><p class="error-field" id="pass-error">Invalid Password</p></div>
+                    <div class="field-header">
+                        <p class="field-title">Password</p>
+                        <p class="error-field" id="pass-error">Invalid Password</p>
+                    </div>
                     <input type="password" placeholder="Password" required class="field-control">
                 </div>
                 <div class="login-btn-wrapper"><button type="submit" id="login-btn">Sign In</button></div>
@@ -36,7 +42,32 @@
             </div>
         </div>
     </div>
-    
+
 </body>
+
+<script>
+    document.getElementById('login-form').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const username = document.querySelector('input[placeholder="Username"]').value;
+        const password = document.querySelector('input[placeholder="Password"]').value;
+
+        const res = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+            sessionStorage.setItem("loggedIn", "true");
+            sessionStorage.setItem("user", username);
+            window.location.href = 'index.html';
+        }
+
+        else{
+            document.getElementById('user-error').style.display = 'block';
+        }
+    });
+</script>
 
 </html>

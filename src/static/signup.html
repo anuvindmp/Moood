@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="icon" href="Assets/logo.svg">
+</head>
+
+<body>
+
+ <video id="bg-video" autoplay muted loop>
+        <source src="/Assets/bgfood.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Login Panel -->
+    <div class="login-wrapper">
+        <div class="login-container">
+            <span class="login-title">Sign Up</span>
+            <form action="/signup" method="post" id="signup-form">
+                <div class="field">
+                    <div class="field-header"><p class="field-title">Username</p><p class="error-field" id="user-error">Invalid Username</p></div>
+                    <input type="text" placeholder="Username" required class="field-control" name="username">    
+                </div>
+                <div class="field">
+                    <div class="field-header"><p class="field-title">Password</p><p class="error-field" id="pass-error">Invalid Password</p></div>
+                    <input type="password" placeholder="Password" required class="field-control" name="password">
+                </div>
+                <div class="login-btn-wrapper"><button type="submit" id="login-btn">Sign Up</button></div>
+            </form>
+            <div class="signup-link">
+                Don't have an account? <a href="login.html">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.getElementById('signup-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const username = document.querySelector('input[placeholder="Username"]').value;
+  const password = document.querySelector('input[placeholder="Password"]').value;
+
+  const res = await fetch('/signup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password })
+  });
+
+  const data = await res.json();
+  if (res.ok) window.location.href = 'login.html';
+});
+</script>
+    
+</body>
+
+</html>
