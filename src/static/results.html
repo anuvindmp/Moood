@@ -1,260 +1,351 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="icon" href="/Assets/logo.png">
+  <link rel="icon" href="/Assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
   <title>Results Page</title>
   <link rel="stylesheet" href="results.css">
   <script>
-  // Sample data: Map dish titles to restaurants
-  const restaurantMap = {
-    "Masala Dosa": ["Dosa Corner", "Udupi Café", "Sambar & Chutney"],
-    "Paneer Butter Masala": ["Tandoori Express", "The Curry Pot", "Spice Lounge"]
-    // Add more dishes here
-  };
+    // Sample data: Map dish titles to restaurants
+    window.restaurantMap = {
+      "Masala Dosa": ["Dosa Corner", "Udupi Café", "Sambar & Chutney"],
+      "Paneer Butter Masala": ["Tandoori Express", "The Curry Pot", "Spice Lounge"]
+      // Add more dishes here
+    };
 
-  // Called when "Where to Eat" button is clicked
-  function openPopup(buttonEl) {
-    const cardEl = buttonEl.closest('.card');
-    if (!cardEl) return;
+    // Called when "Where to Eat" button is clicked
+    function openPopup(buttonEl) {
+      const cardEl = buttonEl.closest('.card');
+      if (!cardEl) return;
 
-    const title = cardEl.querySelector('.card-front .title')?.textContent.trim() || "Unknown Dish";
-    const image = cardEl.querySelector('.card-front img')?.src || "";
-    const desc = cardEl.querySelector('.card-back .description')?.textContent.trim() || "No description available.";
+      const title = cardEl.querySelector('.card-front .title')?.textContent.trim() || "Unknown Dish";
+      const image = cardEl.querySelector('.card-front img')?.src || "";
+      const desc = cardEl.querySelector('.card-back .description')?.textContent.trim() || "No description available.";
 
-    document.getElementById("popupTitle").textContent = title;
-    document.getElementById("popupImg").src = image;
-    document.getElementById("popupDesc").textContent = desc;
+      document.getElementById("popupTitle").textContent = title;
+      document.getElementById("popupImg").src = image;
+      document.getElementById("popupDesc").textContent = desc;
 
-    const restaurantList = document.getElementById("popupRestaurants");
-    restaurantList.innerHTML = "";
-    const restaurants = restaurantMap[title] || ["No data available"];
-    restaurants.forEach(r => {
-      const li = document.createElement("li");
-      li.textContent = r;
-      restaurantList.appendChild(li);
+      const restaurantList = document.getElementById("popupRestaurants");
+      restaurantList.innerHTML = "";
+      const restaurants = restaurantMap[title] || ["No data available"];
+      restaurants.forEach(r => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        restaurantList.appendChild(li);
+      });
+
+      const results = JSON.parse(localStorage.getItem('results') || '[]');
+      const match = results.find(d => d.dish === title);
+      const orderBtnLink = document.getElementById("online-btn-link");
+
+      if (match && match.url) {
+        orderBtnLink.href = match.url;
+      } else {
+        orderBtnLink.href = "#"; // fallback
+      }
+
+      const priceEl = document.getElementById("price");
+      if (match && match.price) {
+        priceEl.textContent = match.price;
+      } else {
+        priceEl.textContent = "Not available";
+      }
+
+      const recipeBtnLink = document.getElementById("recipe-link");
+      recipeBtnLink.href = `recipev2.html?dish=${encodeURIComponent(title)}`;
+
+      const overlay = document.getElementById("overlay");
+      const popup = document.getElementById("popupCard");
+
+      // Make visible
+      overlay.style.display = "block";
+      popup.style.display = "block";
+
+      // Trigger animation
+      requestAnimationFrame(() => {
+        overlay.classList.add("show");
+        popup.classList.add("show");
+      });
+    }
+
+    // Closes the popup
+    function closePopup() {
+      const overlay = document.getElementById("overlay");
+      const popup = document.getElementById("popupCard");
+
+      overlay.classList.remove("show");
+      popup.classList.remove("show");
+
+      // Wait for animation to finish before hiding
+      setTimeout(() => {
+        overlay.style.display = "none";
+        popup.style.display = "none";
+      }, 300); // Match CSS transition duration
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const results = JSON.parse(localStorage.getItem('results') || '[]');
+
+      results.slice(0, 6).forEach((dish, i) => {
+        const idx = i + 1;
+
+        // Front
+        const frontTitle = document.getElementById(`title${idx}front`);
+        const frontImg = document.querySelectorAll('.card-front img')[i];
+        const frontTag = document.getElementById(`tag${idx}`);
+
+        // Back
+        const backTitle = document.getElementById(`title${idx}back`);
+        const backDesc = document.getElementById(`desc${idx}`);
+
+        if (frontTitle) frontTitle.textContent = dish.dish;
+        if (frontImg) frontImg.src = dish.image;
+        if (frontTag) frontTag.textContent = dish.tag || "To feed your cravings";
+
+        if (backTitle) backTitle.textContent = dish.dish;
+        if (backDesc) backDesc.textContent = dish.desc;
+      });
+      window.restaurantMap = {};
+      results.forEach(d => {
+        window.restaurantMap[d.dish] = d.resnames || ["No data available"];
+      });
     });
 
-    const overlay = document.getElementById("overlay");
-    const popup = document.getElementById("popupCard");
-
-    // Make visible
-    overlay.style.display = "block";
-    popup.style.display = "block";
-
-    // Trigger animation
-    requestAnimationFrame(() => {
-      overlay.classList.add("show");
-      popup.classList.add("show");
-    });
-  }
-
-  // Closes the popup
-  function closePopup() {
-    const overlay = document.getElementById("overlay");
-    const popup = document.getElementById("popupCard");
-
-    overlay.classList.remove("show");
-    popup.classList.remove("show");
-
-    // Wait for animation to finish before hiding
-    setTimeout(() => {
-      overlay.style.display = "none";
-      popup.style.display = "none";
-    }, 300); // Match CSS transition duration
-  }
-</script>
-
+    function goToRecipe(buttonEl) {
+      const cardEl = buttonEl.closest('.card');
+      const title = cardEl.querySelector('.card-back .title')?.textContent.trim();
+      if (title) {
+        window.location.href = `recipev2.html?dish=${encodeURIComponent(title)}`;
+      }
+    }
+  </script>
 
 </head>
+
 <body>
-    <div class="nav">
-  <span id="logo">MoooD</span>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="my recipe.html">My recipes</a></li>
-    <li><a href="search.html">Search</a></li>
-  </ul>
-  <span id="hi">Whats your Mood Harish?</span>
-</div>
+  <div class="nav">
+    <span id="logo">MoooD</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="my recipe.html">My recipes</a></li>
+      <li><a href="search.html">Search</a></li>
+    </ul>
+    <span id="hi">Whats your Mood Harish?</span>
+  </div>
   <div class="with-heading">
     <h1>Our Suggestions</h1>
-  <div class="results-container">
-<div class="card">
-  <div class="card-flipper">
-    <div class="card-front">
-      <img src="../Assets/dosa.png" alt="Masala Dosa">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+    <div class="results-container">
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="Assets/dosa.png" alt="Masala Dosa">
+            <div class="card-content">
+              <div class="title" id="title1front">Masala Dosa</div>
+              <div class="author" id="tag1">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title1back">Masala Dosa</div>
+              <div class="description" id="desc1">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#">
+                <div class="buttons b1" onclick="goToRecipe(this)">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
       </div>
-    </div>
-  </div>
-</div>
-    <div class="card">
-      <div class="card-flipper">
-    <div class="card-front">
-      <img src="../Assets/blueberry.jpg" alt="Results summary component">
-      <div class="card-content">
-        <div class="title">Panner Butter Masala</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Paneer Butter Masala</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="Assets/blueberry.jpg" alt="Results summary component">
+            <div class="card-content">
+              <div class="title" id="title2front">Panner Butter Masala</div>
+              <div class="author" id="tag2">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title2back">Paneer Butter Masala</div>
+              <div class="description" id="desc2">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#">
+                <div class="buttons b1" onclick="goToRecipe(this)">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
       </div>
-    </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-flipper">
-    <div class="card-front">
-      <img src="../Assets/blue_aesthetic.jpg" alt="Results summary">
-      <div class="card-content">
-        <div class="title">Ice cream</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="Assets/blue_aesthetic.jpg" alt="Results summary">
+            <div class="card-content">
+              <div class="title" id="title3front">Ice cream</div>
+              <div class="author" id="tag3">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title3back">Masala Dosa</div>
+              <div class="description" id="desc3">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#">
+                <div class="buttons b1" onclick="goToRecipe(this)">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
       </div>
-    </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-flipper">
-    <div class="card-front">
-      <img src="https://shots.codepen.io/davidsdearaujo/pen/GRPGPZY-512.jpg" alt="Results summary component">
-      <div class="card-content">
-        <div class="title">Chicken Biriyani</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="https://shots.codepen.io/davidsdearaujo/pen/GRPGPZY-512.jpg" alt="Results summary component">
+            <div class="card-content">
+              <div class="title" id="title4front">Chicken Biriyani</div>
+              <div class="author" id="tag4">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title4back">Masala Dosa</div>
+              <div class="description" id="desc4">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#">
+                <div class="buttons b1" onclick="goToRecipe(this)">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
       </div>
-    </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-flipper">
-    <div class="card-front">
-      <img src="https://shots.codepen.io/greecepowerball/pen/MWXyGYW-512.jpg" alt="Greece Powerball">
-      <div class="card-content">
-        <div class="title">Puttu and kadala</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="https://shots.codepen.io/greecepowerball/pen/MWXyGYW-512.jpg" alt="Greece Powerball">
+            <div class="card-content">
+              <div class="title" id="title5front">Puttu and kadala</div>
+              <div class="author" id="tag5">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title5back">Masala Dosa</div>
+              <div class="description" id="desc5">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#">
+                <div class="buttons b1" onclick="goToRecipe(this)">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
       </div>
-    </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-flipper">
-    <div class="card-front">
-      <img src="https://shots.codepen.io/vetrisuriya/pen/qBzPYGm-512.jpg" alt="Results summary">
-      <div class="card-content">
-        <div class="title">Results summary 2</div>
-        <div class="author">To feed your cravings</div>
-      </div>
-    </div>
-    <div class="card-back">
-      <div class="card-content">
-        <div class="title">Masala Dosa</div>
-        <div class="description">
-           A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+      <div class="card">
+        <div class="card-flipper">
+          <div class="card-front">
+            <img src="https://shots.codepen.io/vetrisuriya/pen/qBzPYGm-512.jpg" alt="Results summary">
+            <div class="card-content">
+              <div class="title" id="title6front">Results summary 2</div>
+              <div class="author" id="tag6">To feed your cravings</div>
+            </div>
+          </div>
+          <div class="card-back">
+            <div class="card-content">
+              <div class="title" id="title6back">Masala Dosa</div>
+              <div class="description" id="desc6">
+                A crispy, golden South Indian crepe filled with a spiced potato mixture, served with chutney and sambar.
+              </div>
+              <a href="#">
+                <div class="buttons b1" onclick="openPopup(this)">
+                  Where to Eat
+                </div>
+              </a>
+              <a href="#" onclick="goToRecipe(this)">
+                <div class="buttons b1">
+                  Find Recipe
+                </div>
+              </a>
+            </div>
+          </div>
         </div>
-        <a href="#"><div class="buttons b1" onclick="openPopup(this)">
-          Where to Eat
-        </div></a>
-        <a href="#"><div class="buttons b1">
-          Find Recipe
-        </div></a>
-    </div>
       </div>
     </div>
-  </div>
-  </div>
 
-<!-- Overlay -->
-<div class="overlay" id="overlay" onclick="closePopup()"></div>
+    <!-- Overlay -->
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
 
-<!-- Popup Modal -->
-<div class="popup-card" id="popupCard">
-  <span class="close-btn" onclick="closePopup()">&times;</span>
-  <h2 id="popupTitle">Dish Name</h2>
-  <img id="popupImg" src="" alt="Dish Image">
-  <p id="popupDesc"></p>
-  <h3>Available at:</h3>
-  <ul id="popupRestaurants"></ul>
-  <div class="cluster">
-  <a href="#"><div class="buttons b2">
-    View Recipe
-        </div></a>  
-  <a href="#"><div class="buttons b2">
-          Order Online
-        </div></a>
-  </div>
-</div>
+    <!-- Popup Modal -->
+    <div class="popup-card" id="popupCard">
+      <span class="close-btn" onclick="closePopup()">&times;</span>
+      <h2 id="popupTitle">Dish Name</h2>
+      <img id="popupImg" src="" alt="Dish Image">
+      <p id="popupDesc"></p>
+      <h3>Available at:</h3>
+      <ul id="popupRestaurants">
+
+      </ul>
+      <h3>Starting From <span id="price"></span></h3>
+      <div class="cluster">
+        <a href="recipev2.html" id="recipe-link">
+          <div class="buttons b2">
+            View Recipe
+          </div>
+        </a>
+        <a href="#" id="online-btn-link" target="_blank">
+          <div class="buttons b2">
+            Order Online
+          </div>
+        </a>
+      </div>
+    </div>
 </body>
+
 </html>

@@ -1,7 +1,7 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background-image: url(/Assets/stacked-waves-haikei\ \(1\).png);
+  background-image: url(Assets/stacked-waves-haikei\ \(1\).png);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
@@ -17,7 +17,7 @@ font-style: normal;
 
 @font-face {
     font-family: 'custom';
-    src: url('/Assets/ciguatera.otf');
+    src: url('Assets/ciguatera.otf');
 }
 
 .nav span{

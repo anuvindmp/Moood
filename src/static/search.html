@@ -1,100 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="icon" href="/Assets/logo.png" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link id="style" rel="stylesheet" type="text/css" href="s1.css" />
-    <title>Search</title>
-    <script>
-      window.addEventListener("DOMContentLoaded", () => {
-        const overlay = document.getElementById("fade-wrap");
-        if (overlay) {
-          overlay.style.opacity = "0";
-          setTimeout(() => {
-            overlay.style.display = "none";
-          }, 300);
-        }
-      });
 
-      function toggleVegLabel(checkbox) {
-        const label = document.getElementById("veg-status");
-        if (checkbox.checked) {
-          label.textContent = "Veg";
-          label.style.color = "#2e7d32"; // green
-        } else {
-          label.textContent = "Non-Veg";
-          label.style.color = "#c62828"; // red
-        }
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" href="/Assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <link id="style" rel="stylesheet" type="text/css" href="s1.css" />
+  <title>Search</title>
+  <style>
+    #fade-wrap {
+      background-color: #000;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 1;
+      z-index: 999;
+      pointer-events: auto;
+      transition: opacity 0.3s ease-in-out;
+    }
+  </style>
+</head>
 
-    </script>
-    <style>
-      #fade-wrap {
-        background-color: #000;
-        position: absolute;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        opacity: 1;
-        z-index: 999;
-        pointer-events: auto;
-        transition: opacity 0.3s ease-in-out;
-      }
-    </style>
-  </head>
+<body>
+  <div id="fade-wrap"></div>
+  <div class="nav">
+    <span id="logo">MoooD</span>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="my recipe.html">My recipes</a></li>
+      <li><a href="search.html">Search</a></li>
+    </ul>
+    <span id="hi">Whats your Mood Harish?</span>
+  </div>
 
-  <body>
-    <div id="fade-wrap"></div>
-    <div class="nav">
-      <span id="logo">MoooD</span>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="my recipe.html">My recipes</a></li>
-        <li><a href="search.html">Search</a></li>
-      </ul>
-      <span id="hi">Whats your Mood Harish?</span>
+  <div class="body">
+    <div class="sideimg1">
+      <img src="../Assets/Veggies_new.avif" alt="sushi" id="veggie" />
     </div>
 
-    <div class="body">
-      <div class="sideimg1">
-        <img src="../Assets/Veggies_new.avif" alt="sushi" id="veggie" />
-      </div>
-
+    <form id="moodForm">
       <div class="searchbar">
         <h2>Find the perfect food to match your MoooD!</h2>
         <div class="inputs">
           <div class="location">
-            <input
-              type="text"
-              placeholder="📍 Enter your location"
-              class="input_text"
-              name="location"
-            />
+            <input type="text" placeholder="📍 Enter your location" class="input_text" name="location" />
           </div>
           <div class="mood">
-            <input
-              type="text"
-              placeholder="Tell us how you are feeling..."
-              class="input_text"
-              name="mood"
-            />
+            <input type="text" placeholder="Tell us how you are feeling..." class="input_text" name="mood" />
           </div>
           <div class="veg-switch">
             <label class="switch">
-              <input
-                type="checkbox"
-                id="veg"
-                name="veg"
-                onchange="toggleVegLabel(this)"
-              />
+              <input type="checkbox" id="veg" name="veg" onchange="toggleVegLabel(this)" />
               <span class="slider"></span>
             </label>
             <span id="veg-status" class="veg-label">Non-Veg</span>
@@ -103,55 +66,115 @@
 
 
 
- <div class="extra-inputs">
-  <!-- Hunger Level Slider -->
-  <div class="form-group">
-    <div class="slider-container">
-  <label for="hunger">Hunger Level:</label>
-  <input type="range" id="hunger" name="hunger" min="1" max="4" step="1" value="1" required>
-  <div class="slider-labels">
-<span>🥪 Snack</span>
-<span>🍜 Normal</span>
-<span>🍛 Very Hungry</span>
-<span>🔥 Starving</span>
+        <div class="extra-inputs">
+          <!-- Hunger Level Slider -->
+          <div class="form-group">
+            <div class="slider-container">
+              <label for="hunger">Hunger Level:</label>
+              <input type="range" id="hunger" name="hunger" min="1" max="4" step="1" value="1" required>
+              <div class="slider-labels">
+                <span>🥪 Snack</span>
+                <span>🍜 Normal</span>
+                <span>🍛 Very Hungry</span>
+                <span>🔥 Starving</span>
 
+              </div>
+            </div>
+          </div>
+
+          <!-- Cravings -->
+          <div class="form-group">
+            <label>What are you craving?</label>
+            <div class="cravings-options" required>
+              <label><input type="radio" name="craving" value="sweet" /> 🍫 Sweet</label>
+              <label><input type="radio" name="craving" value="spicy" /> 🌶️ Spicy</label>
+              <label><input type="radio" name="craving" value="savory" /> 😋 Savory</label>
+              <label><input type="radio" name="craving" value="crunchy" /> 🥨 Crunchy</label>
+              <label><input type="radio" name="craving" value="cold" /> 🍦 Cold</label>
+              <label><input type="radio" name="craving" value="hot" /> 🍜 Hot</label>
+            </div>
+          </div>
+
+          <!-- Cuisine -->
+          <div class="form-group">
+            <label for="cuisine">Preferred Cuisine</label>
+            <select name="cuisine" id="cuisine" class="input_text" required>
+              <option value="north indian">🍛 North Indian</option>
+              <option value="south indian">🥥 South Indian</option>
+              <option value="chinese">🥡 Chinese</option>
+              <option value="italian">🍝 Italian</option>
+              <option value="american">🍔 American</option>
+            </select>
+          </div>
+          <div class="btns"> <button class="submit b1" type="submit">Eat Your Mood</button></div>
+    </form>
   </div>
-</div>
+  <div class="sideimg">
+    <img src="../Assets/Sushi_replace.avif" alt="sushi" id="sushi" />
   </div>
-
-  <!-- Cravings -->
-  <div class="form-group">
-    <label>What are you craving?</label>
-    <div class="cravings-options" required>
-      <label><input type="radio" name="craving" value="sweet" /> 🍫 Sweet</label>
-      <label><input type="radio" name="craving" value="spicy" /> 🌶️ Spicy</label>
-      <label><input type="radio" name="craving" value="savory" /> 😋 Savory</label>
-      <label><input type="radio" name="craving" value="crunchy" /> 🥨 Crunchy</label>
-      <label><input type="radio" name="craving" value="cold" /> 🍦 Cold</label>
-      <label><input type="radio" name="craving" value="hot" /> 🍜 Hot</label>
-    </div>
   </div>
+</body>
 
-  <!-- Cuisine -->
-  <div class="form-group">
-    <label for="cuisine">Preferred Cuisine</label>
-    <select name="cuisine" id="cuisine" class="input_text" required>
-      <option value="indian">🍛 North Indian</option>
-      <option value="japanese">🥥 South Indian</option>
-      <option value="chinese">🥡 Chinese</option>
-      <option value="italian">🍝 Italian</option>
-      <option value="american">🍔 American</option>
-    </select>
-  </div>
-<div class="btns"> <button class="submit b1">Eat Your Mood</button></div>
-  
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.getElementById("fade-wrap");
+    if (overlay) {
+      overlay.style.opacity = "0";
+      setTimeout(() => {
+        overlay.style.display = "none";
+      }, 300);
+    }
+  });
 
-</div>
+  function toggleVegLabel(checkbox) {
+    const label = document.getElementById("veg-status");
+    if (checkbox.checked) {
+      label.textContent = "Veg";
+      label.style.color = "#2e7d32"; // green
+    } else {
+      label.textContent = "Non-Veg";
+      label.style.color = "#c62828"; // red
+    }
+  }
+
+  document.getElementById('moodForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const location = document.querySelector('input[name="location"]').value;
+    const mood = document.querySelector('input[name="mood"]').value;
+    const veg = document.getElementById('veg').checked;
+    const hunger = document.getElementById('hunger').value;
+    const cuisine = document.getElementById('cuisine').value;
+    const craving = document.querySelector('input[name="craving"]:checked')?.value;
+
+    const payload = {
+      location,
+      mood,
+      veg,
+      hunger,
+      cuisine,
+      craving
+    };
+
+    try {
+      const response = await fetch('/mood-input', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      localStorage.setItem('results', JSON.stringify(result.results)); 
+      window.location.href = 'results.html';
+    } catch (err) {
+      alert('Error sending mood data!');
+      console.error(err);
+    }
+  });
 
 
-      <div class="sideimg">
-        <img src="../Assets/Sushi_replace.avif" alt="sushi" id="sushi" />
-      </div>
-    </div>
-  </body>
+</script>
+
 </html>
